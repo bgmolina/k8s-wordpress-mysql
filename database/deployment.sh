@@ -17,12 +17,14 @@ if [ "$ARGS" == "delete" ]; then
     kubectl $ARGS -f database/pv-claim.yml
     kubectl $ARGS -f database/persistent-volume.yml
     kubectl $ARGS -f database/storage-class.yaml
+    kubectl $ARGS -f database/namespace.yml
     kubectl label nodes minikube disktype- # remove label for minikube node
 else
-    echo "[database] 🗃 Deploying services...🚀"
+    echo "[database] Deploying services...🚀"
     kubectl label nodes minikube disktype=local # create label for minikube node
     minikube ssh "sudo mkdir /mnt/data" # create directory for minikube to mount the volume to the node
 
+    kubectl $ARGS -f database/namespace.yml
     kubectl $ARGS -f database/config-map.yml
     kubectl $ARGS -f database/secret.yml
     kubectl $ARGS -f database/storage-class.yaml

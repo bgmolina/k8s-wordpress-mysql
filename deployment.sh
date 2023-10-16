@@ -19,9 +19,13 @@ while true; do
         case $REPLY in
             "1")
                 ARGS="apply"
+                echo ""
+                bash database/deployment.sh $ARGS
+                echo ""
                 echo "[wordpress] Deploying services...🚀"
-                bash database/deployment.sh
-
+                kubectl $ARGS -f namespace.yml
+                kubectl $ARGS -f config-map.yml
+                kubectl $ARGS -f secret.yml
                 kubectl $ARGS -f service.yml
                 kubectl $ARGS -f deployment.yml
 
@@ -31,21 +35,25 @@ while true; do
                 echo "- Network: http://127.0.0.1:3000/"
                 echo ""
                 echo "Checking if pods is ready 👀 and running port-forward...🔎"
-                # check if pod with label app=wordpress is ready when deploying and
+                # check if pod with label app=wordpress and namespace=web is ready when deploying and
                 # forward port 3000 to 80 (server) for testing purposes only (not for production)
                 # wait for 60 seconds.
-                kubectl wait --for=condition=ready pod -l app=wordpress --timeout=60s && 
-                # kubectl port-forward service/ingress-nginx-controller -n ingress-nginx 3000:80
-                kubectl port-forward service/wordpress-svc 3000:80
+                kubectl wait --for=condition=ready -n web pod -l app=wordpress --timeout=60s && 
+                kubectl port-forward service/wordpress-svc 3000:80 -n web
 
                 exit 0
                 ;;
             "2")
                 ARGS="delete"
-                echo "[wordpress] Removing services...🙃"
+                echo ""
                 bash database/deployment.sh $ARGS
+                echo ""
+                echo "[wordpress] Removing services...🙃"
                 kubectl $ARGS -f deployment.yml
                 kubectl $ARGS -f service.yml
+                kubectl $ARGS -f config-map.yml
+                kubectl $ARGS -f secret.yml
+                kubectl $ARGS -f namespace.yml
 
                 exit 0
                 ;;

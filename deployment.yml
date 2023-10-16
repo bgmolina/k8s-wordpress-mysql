@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress
+  namespace: web
   labels:
     app: wordpress
 spec:
@@ -22,22 +23,22 @@ spec:
         - name: WORDPRESS_DB_HOST
           valueFrom:
             configMapKeyRef:
-              name: mysql-cm
+              name: wordpress-cm
               key: host
         - name: WORDPRESS_DB_USER
           valueFrom:
             configMapKeyRef:
-              name: mysql-cm
+              name: wordpress-cm
               key: user
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysql-sec
+              name: wordpress-sec
               key: password
         - name: WORDPRESS_DB_NAME
           valueFrom:
             configMapKeyRef:
-              name: mysql-cm
+              name: wordpress-cm
               key: database
         resources:
           requests:
