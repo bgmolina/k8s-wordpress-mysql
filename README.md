@@ -16,6 +16,5 @@ TODO:
 - crear namespace para database [ok]
 - crear namespace para web site (wordpress) [ok]
 - crear config map y secret para wordpress [ok]
-- opcion para encender solo la web []
-- implementar haproxy como ingress controller o similar []
+- opcion para encender solo la web [ok]
 -->
