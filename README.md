@@ -1,20 +1,82 @@
 
+<a href="README.en.md">
+  <img
+    align="right"
+    src="https://img.shields.io/badge/English-5291f5?style=for-the-badge&logoColor=white&logo=googletranslate"
+    alt="English"
+  />
+</a>
+
+<div>
+  <a href="https://minikube.sigs.k8s.io/docs/" target="_blank">
+    <img
+      src="https://img.shields.io/badge/v1.31.2-gray?style=flat&logo=minikube&label=Minikube&labelColor=161b22"
+      alt="Minikube"
+    />
+  </a>
+  <a href="https://kubernetes.io/" target="_blank">
+    <img
+      src="https://img.shields.io/badge/-v1.28.2-gray?style=flat&logo=kubernetes&label=Kubernetes&labelColor=161b22"
+      alt="Kubernetes"
+    />
+  </a>
+</div>
+
+# Wordpress y MySQL 🐬
+### Aplicación con las siguientes características:
+- Namespace para Wordpress y MySQL
+- Volumen persistente para la base de datos
+- Port Forwarding para acceder a Wordpress desde el host local
+- ConfigMap y Secretos
+
+### Requisitos previos 📝
+- Kubernetes 🐳
+- Minikube ⚙
+
+## Ejecución del proyecto 🚀
+```bash
+$ bash deployment.sh
+```
+### Menu de opciones 📋
+```bash
+==============================
+Wordpress and MySQL deployment
+==============================
+1) Deploy all services 🚀
+2) Delete all services 🙃
+3) Turn on website 🌐
+4) Quit 👋
+Select an option and press Enter 👆: 
+```
+
+### Demo 🎬
+<!-- <img width="800" height="452" src="./demo/demo.gif"/> -->
+
+## Estructura de proyecto 📂
+```bash
+.
+├── database/
+│   ├── deployment.sh
+│   ├── namespace.yml
+│   ├── config-map.yml
+│   ├── secret.yml
+│   └── storage-class.yml
+│   ├── pv-claim.yml
+│   ├── persistent-volume.yml
+│   └── service.yml
+│   ├── deployment.yml
+├── deployment.sh
+├── namespace.yml
+├── config-map.yml
+├── secret.yml
+├── service.yml
+├── deployment.yml
+└── README.md
+```
+
+
 <!--
-links:
-
-Example: Deploying WordPress and MySQL with Persistent Volumes
-https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/
-
-kubernetes-ingress
-https://github.com/haproxytech/kubernetes-ingress
-
-Uso de HAProxy como Ingress Controller
-https://patriciocerda.com/?p=1284#
-
-
 TODO:
-- crear namespace para database [ok]
-- crear namespace para web site (wordpress) [ok]
-- crear config map y secret para wordpress [ok]
-- opcion para encender solo la web [ok]
+- [ ] Grabar demo app
+- [ ] Generar readme en ingles
 -->
