@@ -7,21 +7,6 @@
   />
 </a>
 
-<div>
-  <a href="https://minikube.sigs.k8s.io/docs/" target="_blank">
-    <img
-      src="https://img.shields.io/badge/v1.31.2-gray?style=flat&logo=minikube&label=Minikube&labelColor=161b22"
-      alt="Minikube"
-    />
-  </a>
-  <a href="https://kubernetes.io/" target="_blank">
-    <img
-      src="https://img.shields.io/badge/-v1.28.2-gray?style=flat&logo=kubernetes&label=Kubernetes&labelColor=161b22"
-      alt="Kubernetes"
-    />
-  </a>
-</div>
-
 # Wordpress y MySQL 🐬
 ### Aplicación con las siguientes características:
 - Namespace para Wordpress y MySQL
@@ -50,7 +35,7 @@ Select an option and press Enter 👆:
 ```
 
 ### Demo 🎬
-<!-- <img width="800" height="452" src="./demo/demo.gif"/> -->
+<img height="500" src="./demo/demo.gif"/>
 
 ## Estructura de proyecto 📂
 ```bash
@@ -77,6 +62,6 @@ Select an option and press Enter 👆:
 
 <!--
 TODO:
-- [ ] Grabar demo app
+- [x] Grabar demo app
 - [ ] Generar readme en ingles
 -->
