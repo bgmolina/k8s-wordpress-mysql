@@ -4,6 +4,6 @@ metadata:
   name: wordpress-cm
   namespace: web
 data:
-  host: mysql-svc.database.svc.cluster.local # Service name of mysql (mysql-svc) in the "database" namespace
-  database: wordpress
-  user: wordpress
+  WORDPRESS_DB_HOST: mysql-svc.database.svc.cluster.local
+  WORDPRESS_DB_NAME: wordpress
+  WORDPRESS_DB_USER: wordpress

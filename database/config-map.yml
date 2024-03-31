@@ -4,6 +4,6 @@ metadata:
   name: mysql-cm
   namespace: database
 data:
-  host: mysql-svc # Service name of mysql
-  database: wordpress
-  user: wordpress
+  host: mysql-svc
+  MYSQL_DATABASE: wordpress
+  MYSQL_USER: wordpress

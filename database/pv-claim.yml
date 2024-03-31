@@ -1,14 +1,13 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-pv-claim
+  name: mysql-pvc
   namespace: database
   labels:
     app: wordpress
 spec:
-  storageClassName: mysql-sc # storage class name
   accessModes:
-    - ReadWriteOnce # only one node can mount the volume
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 4Gi

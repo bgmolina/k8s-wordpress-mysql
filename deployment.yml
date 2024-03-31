@@ -10,7 +10,7 @@ spec:
     matchLabels:
       app: wordpress
   strategy:
-    type: Recreate # Delete pods one by one and create new ones to ensure that at least one pod is running at all times
+    type: Recreate
   template:
     metadata:
       labels:
@@ -19,27 +19,11 @@ spec:
       containers:
       - image: wordpress:6.2.1-apache
         name: wordpress
-        env:
-        - name: WORDPRESS_DB_HOST
-          valueFrom:
-            configMapKeyRef:
+        envFrom:
+          - configMapRef:
               name: wordpress-cm
-              key: host
-        - name: WORDPRESS_DB_USER
-          valueFrom:
-            configMapKeyRef:
-              name: wordpress-cm
-              key: user
-        - name: WORDPRESS_DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
+          - secretRef:
               name: wordpress-sec
-              key: password
-        - name: WORDPRESS_DB_NAME
-          valueFrom:
-            configMapKeyRef:
-              name: wordpress-cm
-              key: database
         resources:
           requests:
             memory: "256Mi"

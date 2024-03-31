@@ -6,9 +6,10 @@ metadata:
   labels:
     app: wordpress
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
-    - protocol: TCP
+    - targetPort: 80
       port: 80
+      nodePort: 31000
   selector:
     app: wordpress
