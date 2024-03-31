@@ -15,53 +15,55 @@
 - ConfigMap y Secretos
 
 ### Requisitos previos 📝
-- Kubernetes 🐳
-- Minikube ⚙
+- [**Microk8s**](https://microk8s.io/docs/getting-started)
+- Ejecutar bash desde carpeta **root** del proyecto
+- Addons [**hostpath-storage**](https://microk8s.io/docs/addon-hostpath-storage)
 
-## Ejecución del proyecto 🚀
+#### Puerto habilitado
+- [**31000**](http://localhost:31000)
+
+#### Menu de acciones disponibles
 ```bash
 $ bash deployment.sh
 ```
-### Menu de opciones 📋
 ```bash
-==============================
-Wordpress and MySQL deployment
-==============================
-1) Deploy all services 🚀
-2) Delete all services 🙃
-3) Turn on website 🌐
-4) Quit 👋
+=========================
+ Portafolio deployment 💼
+=========================
+1) Deploy service 🚀
+2) Delete service 🗑️
+3) Port forward website 🌐
+5) Quit 👋
 Select an option and press Enter 👆: 
 ```
 
 ### Demo 🎬
-<img height="500" src="./demo/demo.gif"/>
+<img width="500" src="./demo/demo.gif"/>
 
-## Estructura de proyecto 📂
+
+## Información relevante 📑
+### Deployment
 ```bash
-.
-├── database/
-│   ├── deployment.sh
-│   ├── namespace.yml
-│   ├── config-map.yml
-│   ├── secret.yml
-│   └── storage-class.yml
-│   ├── pv-claim.yml
-│   ├── persistent-volume.yml
-│   └── service.yml
-│   ├── deployment.yml
-├── deployment.sh
-├── namespace.yml
-├── config-map.yml
-├── secret.yml
-├── service.yml
-├── deployment.yml
-└── README.md
+$ kubectl get deployment --all-namespaces -l app=wordpress
 ```
+| NAMESPACE  | NAME      | IMAGES                 |
+| ---------- | --------- | ---------------------- |
+| database   | mysql     | mysql:8.1.0            |
+| web        | wordpress | wordpress:6.2.1-apache |
 
+### Service
+```bash
+$ kubectl get services --all-namespaces -l app=wordpress
+```
+| NAMESPACE  | NAME          | TYPE      | PORT(S)      |
+| ---------- | ------------- | --------- | ------------ |
+| database   | mysql-svc     | ClusterIP | 3306/TCP     |
+| web        | wordpress-svc | NodePort  | 80:31000/TCP |
 
-<!--
-TODO:
-- [x] Grabar demo app
-- [ ] Generar readme en ingles
--->
+### Persistent Volume Claim
+```bash
+$ kubectl get pvc -n database
+```
+| NAME       | CAPACITY  | ACCESS MODES  | STORAGECLASS      |
+| ---------- | --------- | ------------- | ----------------- |
+| mysql-pvc  | 4Gi       | RWO           | microk8s-hostpath |

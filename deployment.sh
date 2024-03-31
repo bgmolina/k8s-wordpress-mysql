@@ -16,6 +16,7 @@ OPTIONS index:
 '
 
 while true; do
+  echo ""
   select opt in "${OPTIONS[@]}"; do
     case $REPLY in
     "1")
