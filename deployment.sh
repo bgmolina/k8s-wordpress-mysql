@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo "=============================="
-echo "Wordpress and MySQL deployment"
-echo "=============================="
+echo "======================"
+echo "Wordpress and MySQL 🐬"
+echo "======================"
 
 PS3="Select an option and press Enter 👆: "
 OPTIONS=("Deploy all services 🚀" "Delete all services 🗑️" "Port forward website 🌐" "Quit 👋")

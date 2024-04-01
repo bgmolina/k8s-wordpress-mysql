@@ -27,11 +27,11 @@
 $ bash deployment.sh
 ```
 ```bash
-=========================
- Portafolio deployment 💼
-=========================
-1) Deploy service 🚀
-2) Delete service 🗑️
+=======================
+ Wordpress and MySQL 🐬
+=======================
+1) Deploy all services 🚀
+2) Delete all services 🗑️
 3) Port forward website 🌐
 5) Quit 👋
 Select an option and press Enter 👆: 
@@ -40,8 +40,7 @@ Select an option and press Enter 👆:
 ### Demo 🎬
 <img width="500" src="./demo/demo.gif"/>
 
-
-## Relevant information 📑
+## Important information 📑
 ### Deployment
 ```bash
 $ kubectl get deployment --all-namespaces -l app=wordpress
