@@ -22,11 +22,10 @@
 #### Enabled port
 - [**31000**](http://localhost:31000)
 
-## Run the project 🚀
+### Options menu 📋
 ```bash
 $ bash deployment.sh
 ```
-### Options menu 📋
 ```bash
 =========================
  Portafolio deployment 💼
